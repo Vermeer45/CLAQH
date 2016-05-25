@@ -1,5 +1,7 @@
 <?php
-include "head.php";  
+session_start(); 
+include "head.php";
+
 ?>
 
    <body>
@@ -11,13 +13,18 @@ include "head.php";
    	$lieu = $_POST['commune'];
 	$heure = date("H:i");
 
-
-   	$requete ="INSERT INTO introduction VALUES (IDparticipant, '$lacs', '$lieu', NOW(), '$heure', '$expe', NULL, NULL, NULL, NULL, NULL)";
+   	$requete ="INSERT INTO introduction VALUES (IDparticipant, '$lacs', '$lieu', NOW(), '$heure', '$expe', NULL, NULL, NULL, NULL, NULL, NULL)";
 	mysql_query($requete,$CONNEXION);
+
+
 	$requete2 = "SELECT MAX(IDparticipant) FROM introduction";
-	$idparticipant = mysql_query($requete2,$CONNEXION);
+	$resultat = mysql_query($requete2,$CONNEXION);
+	$tuple1=mysql_fetch_array($resultat);
+
+	$idparticipant =$tuple1['MAX(IDparticipant)'];
 
 	$_SESSION['idparticipant'] = $idparticipant;
+	echo $_SESSION['idparticipant'];
 
 	?>
 
@@ -30,10 +37,10 @@ include "head.php";
                     </label>
                     	<table border=0>
                     	<?php
-						if($lacs == "Lacanau")
+						if ($lacs == "Lacanau")
 						{
 							?><tr><td>Vous avez votre résidence principale ici : </td><td><select name="residenceprincipale">$
-											<option value=" "></option>
+											<option value="1"></option>
 											<option value="Lacanau">Lacanau</option>
 											<option value="Leporge">Le porge</option>
 											<option value="Saumos">Saumos</option>
@@ -44,7 +51,7 @@ include "head.php";
 											<option value="Carcan">Autre</option>
 						
 							<tr><td>Vous avez votre résidence secondaire ici :  </td><td><select name="residencesecondaire">
-											<option value=" "></option>
+											<option value="1"></option>
 											<option value="Lacanau">Lacanau</option>
 											<option value="Leporge">Le porge</option>
 											<option value="Saumos">Saumos</option>
@@ -55,10 +62,10 @@ include "head.php";
 											<option value="Carcan">Autre</option>
 											</select></td></tr><?php
 						}
-						if($lacs == "Biscarosse")
+						elseif($lacs == "Biscarosse")
 						{
 							?><tr><td>Vous avez votre résidence principale ici : </td><td><select name="residenceprincipale">
-											<option value=" "></option>
+											<option value="1"></option>
 											<option value="Biscarosse">Biscarosse</option>
 											<option value="Parentisenbore">Parentis-en-bore</option>
 											<option value="Gaste">Gaste</option>
@@ -69,7 +76,7 @@ include "head.php";
 											<option value="Carcan">Autre</option>
 						
 							<tr><td>Vous avez votre résidence secondaire ici :  </td><td><select name="residencesecondaire">
-											<option value=" "></option>
+											<option value="1"></option>
 											<option value="Biscarosse">Biscarosse</option>
 											<option value="Parentisenbore">Parentis-en-bore</option>
 											<option value="Gaste">Gaste</option>
@@ -81,10 +88,10 @@ include "head.php";
 											</select></td></tr><?php
 						}
 
-						if($lacs == "Hourtin")
+						elseif($lacs == "Hourtin")
 						{
 							?><tr><td>Vous avez votre résidence principale ici : </td><td><select name="residenceprincipale">
-											<option value=" "></option>
+											<option value="1"></option>
 											<option value="Hourtin">Hourtin</option>
 											<option value="Brach">Brach</option>
 											<option value="Carcan">Carcan</option>
@@ -96,7 +103,7 @@ include "head.php";
 											<option value="Carcan">Autre</option>
 						
 							<tr><td>Vous avez votre résidence secondaire ici :  </td><td><select name="residencesecondaire">
-											<option value=" "></option>
+											<option value="1"></option>
 											<option value="Hourtin">Hourtin</option>
 											<option value="Brach">Brach</option>
 											<option value="Carcan">Carcan</option>
@@ -110,10 +117,10 @@ include "head.php";
 						}
 
 
-						if($lacs == "Sanguinet")
+						elseif($lacs == "Sanguinet")
 						{
 							?><tr><td>Vous avez votre résidence principale ici : </td><td><select name="residenceprincipale">
-											<option value=" "></option>
+											<option value="1"></option>
 											<option value="Sanguinet">Sanguinet</option>
 											<option value="Latestedepuch">La teste-de-puch</option>
 											<option value="Gujanmestras">Gujan-mestras</option>
@@ -125,7 +132,7 @@ include "head.php";
 											<option value="Carcan">Autre</option>
 						
 							<tr><td>Vous avez votre résidence secondaire ici :  </td><td><select name="residencesecondaire">
-											<option value=" "></option>
+											<option value="1"></option>
 											<option value="Sanguinet">Sanguinet</option>
 											<option value="Latestedepuch">La teste-de-puch</option>
 											<option value="Gujanmestras">Gujan-mestras</option>
@@ -143,7 +150,7 @@ include "head.php";
 							</td><td><br>
   									<input type="radio" name="logvac" value="oui"> Oui<br>
  									<input type="radio" name="logvac" value="non"> Non</td></tr>
-							<tr><td>Autre : </td><td><input type="text" name="autreraison"></td></tr><br>
+							<tr><td>Autre : </td><td><input type="text" name="autrelogement"></td></tr><br>
 							</table></br>
 							<label>Pêchez-vous ? : </label>
   									<input type="radio" name="peche" value="oui"> Oui<br>
