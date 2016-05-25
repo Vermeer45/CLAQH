@@ -1,7 +1,7 @@
 <?php
+session_start();
 include "head.php";  
 ?>
-
    <body>
 
    	<center><h1>Déterminants Sociaux</h1></center>
