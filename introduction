@@ -1,0 +1,91 @@
+<?php
+include "head.php";  
+$date = date("d-m-Y");
+$heure = date("H:i");
+?>
+
+    <body>    
+	<center><h1>Nouveau participant</h1></center>
+        <form method="POST" action="Profil.php" class="register">
+			<fieldset class="row5">
+                <legend>Introduction</legend>
+                <p>
+                    <label>Numéro de participant : 
+                    </label>
+					<input type="text" maxlength="4"//>
+                </p>
+				<p>
+                    <label>Lac : 
+                    </label>
+					<select class="lac" name="lacs">
+                        <option value="Hourtin">Hourtin
+                        </option>
+                        <option value="Lacanau">Lacanau
+                        </option>
+                        <option value="Sanguinet">Sanguinet
+                        </option>
+                        <option value="Biscarosse">Biscarosse
+                        </option>
+					</select>
+                </p>
+				<p>
+                    <label>Commune : 
+                    </label>
+					<select class="lac" name="commune">
+                        <option value="Hourtin">Hourtin
+                        </option>
+                        <option value="Carcanmaubuisson ">Carcan maubuisson 
+                        </option>
+                        <option value="Bombannes">Bombannes
+                        </option>
+                        <option value="Parentis">Parentis
+                        </option>
+                        <option value="Gastes">Gastes 
+                        </option>
+                        <option value="Lacanauville">PLacanau ville
+                        </option>
+                        <option value="leMoutchic">le Moutchic
+                        </option>
+                        <option value="sanguinet">sanguinet 
+                        </option>
+                        <option value="cazaux">cazaux
+                        </option>
+                        <option value="biscarosseNord">biscarosse nord (autour du golf)
+                        </option>
+                    </select>
+                </p>
+				<p>
+                    <label>Date : 
+                    </label>
+                    <?php echo $date ?>
+				</p>
+				<p>
+					<label>Heure : 
+                    </label>
+                    <?php echo $heure ?>
+                </p>
+				<p>
+                    <label>Expérimentateur : 
+                    </label>
+					<select class="lac" name="expe">
+                        <option value="Elodie">Elodie
+                        </option>
+                        <option value="Victor">Victor
+                        </option>
+                        <option value="Carole">Carole
+                        </option>
+					</select>
+                </p> 
+
+                <div class="button">
+                <center><button type="submit">Commencer le questionnaire</button></center>
+                </div>                 
+            </fieldset>
+				<p><br/></p>
+        </form>
+    </body>
+</html>
+
+
+
+
