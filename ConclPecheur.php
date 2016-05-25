@@ -1,11 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-	<head>
-        <title>Formulaire participant CLAQH</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <link rel="stylesheet" type="text/css" href="defaut.css"/>
-    </head>
-
+<?php
+include "head.php";  
+?>
    <body>
 
    	<center><h1>Conclusion - Pécheurs</h1></center>
@@ -27,7 +22,7 @@
 					<label class="mot1">Non</label>
                 </p>
 				<p>
-					<label>Selon vous est-ce que :</label><br/>
+					<label>Selon vous est-ce que :</label><br/><br/>
 				</p>
 					<p class="sous">
 						<label>La qualité des produits issus des lacs dépend de la qualité de l'eau ?</label>
@@ -57,7 +52,22 @@
 						<label class="mot2">Ne sait pas</label>
 					</p>
 	 		</fieldset>
-			<div><center><br><br><a href="Profil2.php" type="submit" class="button2">Valider et poursuivre</a></center><br/><br/><br/><br/></div> 	
-        </form>
+			
+			<php
+			if($_SESSION['profil'] == "ResPrincipalePecheur")
+			{
+				?><div><center><br><br><a href="ConclResidents.php" type="submit" class="button2">Valider et poursuivre</a></center><br/><br/><br/><br/></div><php
+			}
+			elseif($_SESSION['profil'] == "Res2dairePecheur")
+			{
+				?><div><center><br><br><a href="ConclResidents.php" type="submit" class="button2">Valider et poursuivre</a></center><br/><br/><br/><br/></div><php
+			}
+			elseif($_SESSION['profil'] == "VacancierPecheur")
+			{
+				?><div><center><br><br><a href="ConclVacanciers.php" type="submit" class="button2">Valider et poursuivre</a></center><br/><br/><br/><br/></div><php
+			}
+			?>
+			
+		</form>
    </body>
 </html>
