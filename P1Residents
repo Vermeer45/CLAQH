@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+        <title>Formulaire participant CLAQH</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <link rel="stylesheet" type="text/css" href="defaut.css"/>
+    </head>
+
+<body>
+		<center><h1>Partie 1 - Résidents</h1></center>
+			<form  method="POST" action="test.php" class="register">
+				<fieldset class="row2">
+	            <legend>Informations résidence</legend>
+	                <p>
+						<label>Depuis combien de temps habitez-vous dans cette commune ?</label><select name="tempscommune">
+								<option value="5ans">Moins de 5 ans</option>
+								<option value="515ans">De 5 à 15 ans</option>
+								<option value="15ans">Plus de 15 ans</option>
+							</select>
+					</p>
+            </fieldset>
+				
+			<php
+			if($_SESSION['profil'] == "ResPrincipalePecheur")
+			{
+				?><div><center><br><br><a href="TroncCommun.php" type="submit" class="button2">Valider et poursuivre</a></center><br/><br/><br/><br/></div><php
+			}
+			elseif($_SESSION['profil'] == "Res2dairePecheur")
+			{
+				?><div><center><br><br><a href="P1Vacanciers.php" type="submit" class="button2">Valider et poursuivre</a></center><br/><br/><br/><br/></div><php
+			}
+			elseif($_SESSION['profil'] == "ResPrincipaleNonPecheur")
+			{
+				?><div><center><br><br><a href="TroncCommun.php" type="submit" class="button2">Valider et poursuivre</a></center><br/><br/><br/><br/></div><php
+			}
+			elseif($_SESSION['profil'] == "Res2daireNonPecheur")
+			{
+				?><div><center><br><br><a href="P1Vacanciers.php" type="submit" class="button2">Valider et poursuivre</a></center><br/><br/><br/><br/></div><php
+			}
+			?>
+
+	        </form>
+    	</body>
