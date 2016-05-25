@@ -235,7 +235,34 @@ include "head.php";
 						<textarea name="textarea10" rows="2" cols="50"></textarea><br/>
 				</p>
 			</fieldset>
-			<div><center><br><br><a href="Profil2.php" type="submit" class="button2">Valider et poursuivre</a></center><br/><br/><br/><br/></div> 	
-        </form>
+		
+			<php
+			if($_SESSION['profil'] == "ResPrincipalePecheur")
+			{
+				?><div><center><br><br><a href="ConclPech.php" type="submit" class="button2">Valider et poursuivre</a></center><br/><br/><br/><br/></div><php
+			}
+			elseif($_SESSION['profil'] == "Res2dairePecheur")
+			{
+				?><div><center><br><br><a href="ConclPech.php" type="submit" class="button2">Valider et poursuivre</a></center><br/><br/><br/><br/></div><php
+			}
+			elseif($_SESSION['profil'] == "VacancierPecheur")
+			{
+				?><div><center><br><br><a href="ConclPech.php" type="submit" class="button2">Valider et poursuivre</a></center><br/><br/><br/><br/></div><php
+			}
+			elseif($_SESSION['profil'] == "ResPrincipaleNonPecheur")
+			{
+				?><div><center><br><br><a href="ConclResidents.php" type="submit" class="button2">Valider et poursuivre</a></center><br/><br/><br/><br/></div><php
+			}
+			elseif($_SESSION['profil'] == "Res2dairePecheur")
+			{
+				?><div><center><br><br><a href="ConclResidents.php" type="submit" class="button2">Valider et poursuivre</a></center><br/><br/><br/><br/></div><php
+			}
+			elseif($_SESSION['profil'] == "VacancierNonPecheur")
+			{
+				?><div><center><br><br><a href="ConclVacanciers.php" type="submit" class="button2">Valider et poursuivre</a></center><br/><br/><br/><br/></div><php
+			}
+			?>
+			
+	</form>
    </body>
 </html>
