@@ -61,7 +61,7 @@
 						<label class="mot2">Ne sait pas</label>
 					</p>
 	 		</fieldset>
-			<div><center><br><br><a href="Profil2.php" type="submit" class="button2">Valider et poursuivre</a></center><br/><br/><br/><br/></div> 	
-        </form>
+		<div><center><br><br><a href="DeterSociaux.php" type="submit" class="button2">Valider et poursuivre</a></center><br/><br/><br/><br/></div>
+	</form>
    </body>
 </html>
