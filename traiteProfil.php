@@ -8,9 +8,9 @@
  $ressecond = $_POST['residencesecondaire'];
  $logvac = $_POST['logvac'];
  $peche = $_POST['peche'];
+ $autre = $_POST['autrelogement'];
+ $id = $_SESSION['idparticipant'];
 
- echo $_SESSION['idparticipant'];
- echo $resprinc;	  
 
 	if ($resprinc != "1" && $peche == "oui")
 	{
@@ -22,7 +22,7 @@
 		$_SESSION['profil'] = "Res2dairePecheur";
 		?><div><center><a href="partie1resident.php" class="button2">partie1pecheur</a></center></div><?php	
 	}
-	elseif ($ressecond == "1" && $resprinc == "1" && $peche == "oui")
+	elseif ($ressecond == "1" && $resprinc == "1" && $peche == "oui" && $logvac == "oui")
 	{
 		$_SESSION['profil'] = "VacancierPecheur";
 		?><div><center><a href="partie1pecheur.php" class="button2">partie1pecheur</a></center></div><?php
@@ -37,14 +37,32 @@
 		$_SESSION['profil'] = "Res2daireNonpecheur";
 		?><div><center><a href="partie1resident.php" class="button2">partie1resident</a></center></div><?php
 	}
-	elseif ($ressecond == "1" && $resprinc == "1" && $peche == "non")
+	elseif ($ressecond == "1" && $resprinc == "1" && $peche == "non" && $logvac == "oui")
 	{
 		$_SESSION['profil'] = "VacancierNonPecheur";
-		?><div><center><a href="partie1vacancier.php" class="button2">partie1vacancier </a></center></div><?php
+		?><div><center><a href="partie1vacancier.php" class="button2">partie1vacancier</a></center></div><?php
+	}
+	elseif ($logvac == "non" && $peche == "oui") 
+	{
+		$_SESSION['profil'] = "VacanciePecheur";
+
+		$requete1 = "UPDATE introduction SET Autrelogvacance = '$autre' WHERE IDparticipant = '$id'";
+		mysql_query($requete1,$CONNEXION);
+		?><div><center><a href="partie1vacancier.php" class="button2">partie1vacancier</a></center></div><?php	
+		
+	}
+	elseif ($logvac == "non" && $peche == "non") 
+	{
+		$_SESSION['profil'] = "VacancierNonPecheur";
+
+		$requete1 = "UPDATE introduction SET Autrelogvacance = '$autre' WHERE IDparticipant = '$id'";
+		mysql_query($requete1,$CONNEXION);
+		?><div><center><a href="partie1vacancier.php" class="button2">partie1vacancier</a></center></div><?php	
+		
 	}
 
 $profil = $_SESSION['profil'];
-$id = $_SESSION['idparticipant'];
+
 
 $requete = "UPDATE introduction SET TypeProfil = '$profil' WHERE IDparticipant = '$id'";
 mysql_query($requete,$CONNEXION);
@@ -52,6 +70,13 @@ mysql_query($requete,$CONNEXION);
 echo $profil;
 
 ?>
+
+
+
+
+
+
+
 
 
 
